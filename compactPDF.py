@@ -25,10 +25,10 @@ try:
     else:
         files = [argv[i].split('.')[-2]+'.pdf'.replace('\\','')
                  for i in range(1,len(argv))]
-            
+
+    width, height = 720, 540
+    
     for _file_name in files:
-        #print(_file_name)
-        #break
         file = open(_file_name,'rb')
         pdf = PyPDF2.PdfFileReader(file)
         
@@ -48,10 +48,18 @@ try:
             pages.append(number_)
             
         k = 0
+        j = 0
         while k < pdf_length-1:   
             if(pages[k] != pages[k+1]):
                 new_pdf.addPage(pdf.getPage(k))
+                # scale to a fix widht and height
+                new_pdf.getPage(j).scaleTo(width, height)
+                j += 1
             k+=1
+            
+        # last page
+        new_pdf.addPage(pdf.getPage(k))
+        new_pdf.getPage(j).scaleTo(width, height)
 
         output_name = _file_name.split('.')[-2]+'_compact.pdf'
         output_file = open(output_name, 'wb')
