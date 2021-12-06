@@ -1,4 +1,5 @@
-# Aupi Santiago
+#!/usr/bin/env python3
+# Author: Aupi Santiago
 # This utility is very useful when
 # you want to avoid repeating pdf sheets with the same page number.
 # Normally this happens when the pdf
