@@ -16,6 +16,7 @@ try:
     import os
 except(ModuleNotFoundError):
     print("PyPDF2 not installed. Install it with: pip install PyPDF2")
+    exit()
 
 try:
     #print(os.getcwd(),'\n')
